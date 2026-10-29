@@ -21,10 +21,10 @@ import (
 	"github.com/opencontainers/runtime-spec/specs-go"
 )
 
-// PauseContainer is the name of the sandbox root container. The underscore
-// keeps it outside the k8s-short-name an ActorTemplate container
-// name is drawn from, so no actor container can collide with it.
-const PauseContainer = "_pause"
+// PauseContainer is the name of the sandbox root container. Actor container
+// names cannot collide with it: internal/resources rejects "pause" as reserved.
+// Changing it breaks restore of checkpoints taken under the old name.
+const PauseContainer = "pause"
 
 // resolvConf is the host resolver config bound into the sandbox.
 const resolvConf = "/etc/resolv.conf"
