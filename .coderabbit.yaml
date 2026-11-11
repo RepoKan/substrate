@@ -8,3 +8,14 @@ reviews:
     enabled: true
     allow_author_approval: false
     max_merge_risk: low
+    max_security_risk: low
+    # Keep governance, CI and code-ownership changes outside automatic approval.
+    overrides:
+      - enabled: false
+        paths:
+          - ".coderabbit.yaml"
+          - ".github/workflows/**"
+          - ".github/CODEOWNERS"
+          - "CODEOWNERS"
+          - "docs/CODEOWNERS"
+          - ".coderabbit.config.ts"
